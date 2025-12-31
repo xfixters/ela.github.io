@@ -1,23 +1,24 @@
 const semesters = {
     1: [
-        { code: "EIQ110", name: "Fundamentos de Procesos Químicos", prereq: [], credits: 2 },
+        { code: "EIE142", name: "Introducción a la Ingeniería Electrica y Electrónica", prereq: [], credits: 3 },
         { code: "FIN100", name: "Desarrollo Integral y Comunicación Para Ingeniería", prereq: [], credits: 3 },
         { code: "MAT1001", name: "Fundamentos de Matematicas para Ingenieria", prereq: [], credits: 6 },
-        { code: "QUI100", name: "Quimica para Ingenieria", prereq: [], credits: 5 },
+        { code: "FIS1121", name: "Introducción a la Física", prereq: [], credits: 5 },
         { code: "IER010", name: "Antropologia Cristiana", prereq: [], credits: 2 }
     ],
     2: [
-        { code: "EIQ120", name: "Fundamentos de Ingeniería", prereq: [], credits: 4 },
+        { code: "FIS1002", name: "Física Mecanica", prereq: [], credits: 5 },
         { code: "MAT1002", name: "Cálculo Diferencial e Integral", prereq: ["MAT1001"], credits: 6 },
-        { code: "QUI161", name: "Química Inorgánica", prereq: ["QUI100"], credits: 5 },
-        { code: "FOFU1", name: "Formacion Fundamental 1", prereq: [], credits: 2 }
+        { code: "MAT1004", name: "Algebra Lineal", prereq: ["MAT1001"], credits: 4 },
+        { code: "QUI1140", name: "Fundamentos de Quimica", prereq: [], credits: 4 }
     ],
     3: [
         { code: "EIQ220", name: "Balance de Materia", prereq: ["EIQ120"], credits: 4 },
         { code: "FIS1002", name: "Física para Ingeniería", prereq: ["MAT1002"], credits: 5 },
         { code: "ICA213", name: "Economía", prereq: ["MAT1001"], credits: 3 },
         { code: "ING9001", name: "Inglés 1", prereq: [], credits: 2 },
-        { code: "MAT1003", name: "Cálculo en Varias Variables", prereq: ["MAT1002"], credits: 4 }
+        { code: "MAT1003", name: "Cálculo en Varias Variables", prereq: ["MAT1002"], credits: 4 },
+        { code: "FOFU1", name: "Formacion Fundamental 1", prereq: [], credits: 2 }
     ],
     4: [
         { code: "EIQ242", name: "Elementos de Fisico química", prereq: ["EIQ120"], credits: 4 },
