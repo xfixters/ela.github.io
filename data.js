@@ -73,6 +73,6 @@ const semesters = {
         { code: "OPT4", name: "Optativo 4", prereq: [], credits: 4 }
     ],
     11: [
-        { code: "EIE626", name: "Proyecto de Titulación", prereq: ["EIE620], credits: 16 }
+        { code: "EIE626", name: "Proyecto de Titulación", prereq: ["EIE620"], credits: 16 }
     ]
 };
