@@ -4,41 +4,46 @@ document.addEventListener("DOMContentLoaded", () => {
     const progressFill = document.getElementById("progress-fill");
     const creditsText = document.getElementById("credits-text");
 
-    // ===== CARGAR APROBADOS =====
+    // ===== CARGAR RAMOS APROBADOS DESDE LOCALSTORAGE =====
     let approved = [];
     try {
         approved = JSON.parse(localStorage.getItem("approvedCourses")) || [];
-    } catch {
+    } catch (e) {
         approved = [];
     }
 
-    // ===== LISTA REAL DE RAMOS =====
+    // ===== LISTA COMPLETA DE RAMOS =====
     const allCourses = [];
     const courseMap = {};
 
     for (let sem in semesters) {
-        semesters[sem].forEach(c => {
-            allCourses.push(c.code);
-            courseMap[c.code] = c;
+        semesters[sem].forEach(course => {
+            allCourses.push(course.code);
+            courseMap[course.code] = course;
         });
     }
 
-    // ===== LIMPIEZA AUTOMÁTICA =====
+    // ===== LIMPIEZA AUTOMÁTICA (POR SI CAMBIAS DATA) =====
     approved = approved.filter(code => allCourses.includes(code));
     localStorage.setItem("approvedCourses", JSON.stringify(approved));
 
-    // ===== PRERREQUISITOS =====
+    // ===== VALIDAR PRERREQUISITOS =====
     function isUnlocked(course) {
-        return course.prereq.every(p => approved.includes(p));
+        if (!course.prereq || course.prereq.length === 0) {
+            return true;
+        }
+        return course.prereq.every(req => approved.includes(req));
     }
 
     // ===== DESAPROBACIÓN EN CASCADA =====
     function removeWithDependents(code) {
-        const toRemove = new Set([code]);
-        let changed = true;
+        const toRemove = new Set();
+        toRemove.add(code);
 
+        let changed = true;
         while (changed) {
             changed = false;
+
             approved.forEach(c => {
                 const prereq = courseMap[c]?.prereq || [];
                 if (prereq.some(p => toRemove.has(p)) && !toRemove.has(c)) {
@@ -51,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
         approved = approved.filter(c => !toRemove.has(c));
     }
 
-    // ===== CRÉDITOS =====
+    // ===== CÁLCULO DE CRÉDITOS =====
     function calculateApprovedCredits() {
         let total = 0;
         for (let sem in semesters) {
@@ -74,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return total;
     }
 
-    // ===== PROGRESO (CRÉDITOS CON 1 DECIMAL) =====
+    // ===== ACTUALIZAR PROGRESO =====
     function updateProgress() {
         const approvedCredits = calculateApprovedCredits();
         const totalCredits = calculateTotalCredits();
@@ -94,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
     }
 
-    // ===== RENDER =====
+    // ===== RENDER PRINCIPAL =====
     function render() {
         grid.innerHTML = "";
 
@@ -112,25 +117,25 @@ document.addEventListener("DOMContentLoaded", () => {
                 const div = document.createElement("div");
                 div.classList.add("course");
 
-                // ===== COLORES SEGÚN RAMO =====
-                if (course.code.startsWith("MAT")) div.classList.add("mat");      // Azul
-                if (course.code.startsWith("EIE")) div.classList.add("eie");      // Verde
-                if (course.code.startsWith("QUI")) div.classList.add("qui");      // Morado
-                if (course.code.startsWith("FIS")) div.classList.add("fis");      // Celeste
-                if (course.code.startsWith("ING")) div.classList.add("ing");      // Amarillo
-                if (course.code.startsWith("FIN")) div.classList.add("fin");      // Naranjo
-                if (course.code.startsWith("DER")) div.classList.add("der");      // Gris
-                if (course.code.startsWith("EII")) div.classList.add("eii");      // Rojo
+                // ===== COLORES POR SIGLA =====
+                if (course.code.startsWith("MAT")) div.classList.add("mat");
+                if (course.code.startsWith("EIE")) div.classList.add("eie");
+                if (course.code.startsWith("QUI")) div.classList.add("qui");
+                if (course.code.startsWith("FIS")) div.classList.add("fis");
+                if (course.code.startsWith("ING")) div.classList.add("ing");
+                if (course.code.startsWith("FIN")) div.classList.add("fin");
+                if (course.code.startsWith("DER")) div.classList.add("der");
+                if (course.code.startsWith("EII")) div.classList.add("eii");
 
                 if (
                     course.code.startsWith("ICR") ||
                     course.code.startsWith("IER") ||
                     course.code.startsWith("FOFU")
-                ) div.classList.add("rosado");                                     // Formación
+                ) div.classList.add("rosado");
 
-                if (course.code.startsWith("OPT"))
-                    div.classList.add("opt");                                      // Verde claro
+                if (course.code.startsWith("OPT")) div.classList.add("opt");
 
+                // ===== CONTENIDO =====
                 div.innerHTML = `
                     <strong>${course.code}</strong><br>
                     ${course.name}<br>
@@ -147,6 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     div.classList.add("locked");
                 }
 
+                // ===== CLICK =====
                 if (unlocked || approved.includes(course.code)) {
                     div.addEventListener("click", () => {
                         if (approved.includes(course.code)) {
