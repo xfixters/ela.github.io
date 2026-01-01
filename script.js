@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const percent = totalCredits === 0
             ? 0
-            : ((approvedCredits / totalCredits) * 100).toFixed(1); // 👈 1 decimal
+            : ((approvedCredits / totalCredits) * 100).toFixed(1);
 
         progressFill.style.width = percent + "%";
         progressText.textContent = `Progreso: ${percent}%`;
@@ -112,26 +112,24 @@ document.addEventListener("DOMContentLoaded", () => {
                 const div = document.createElement("div");
                 div.classList.add("course");
 
-                // ===== COLORES =====
-                if (course.code.startsWith("MAT")) div.classList.add("mat");
-                if (course.code.startsWith("EIQ")) div.classList.add("eiq");
-                if (course.code.startsWith("ING")) div.classList.add("ing");
-                if (course.code.startsWith("QUI")) div.classList.add("qui");
-                if (course.code.startsWith("FIS")) div.classList.add("fis");
-                if (course.code.startsWith("FIN")) div.classList.add("fin");
-                if (course.code.startsWith("ICA")) div.classList.add("ica");
+                // ===== COLORES SEGÚN RAMO =====
+                if (course.code.startsWith("MAT")) div.classList.add("mat");      // Azul
+                if (course.code.startsWith("EIE")) div.classList.add("eie");      // Verde
+                if (course.code.startsWith("QUI")) div.classList.add("qui");      // Morado
+                if (course.code.startsWith("FIS")) div.classList.add("fis");      // Celeste
+                if (course.code.startsWith("ING")) div.classList.add("ing");      // Amarillo
+                if (course.code.startsWith("FIN")) div.classList.add("fin");      // Naranjo
+                if (course.code.startsWith("DER")) div.classList.add("der");      // Gris
+                if (course.code.startsWith("EII")) div.classList.add("eii");      // Rojo
 
                 if (
                     course.code.startsWith("ICR") ||
                     course.code.startsWith("IER") ||
                     course.code.startsWith("FOFU")
-                ) div.classList.add("rosado");
+                ) div.classList.add("rosado");                                     // Formación
 
-                if (
-                    course.code.startsWith("OPT1") ||
-                    course.code.startsWith("OPT2") ||
-                    course.code.startsWith("OPT3")
-                ) div.classList.add("opt");
+                if (course.code.startsWith("OPT"))
+                    div.classList.add("opt");                                      // Verde claro
 
                 div.innerHTML = `
                     <strong>${course.code}</strong><br>
