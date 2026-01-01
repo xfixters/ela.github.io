@@ -34,14 +34,13 @@ h1 {
     transform: scale(1.02);
 }
 
-/* ===== RAMOS APROBADOS: CHECK + LINEA ROJA + ANIMACION ===== */
+/* ===== APROBADOS ===== */
 .course.approved {
     position: relative;
     opacity: 0.95;
     animation: approvedPop 0.25s ease-out;
 }
 
-/* ✔ Check verde */
 .course.approved::before {
     content: "✔";
     position: absolute;
@@ -51,10 +50,8 @@ h1 {
     font-weight: bold;
     color: #2ecc71;
     text-shadow: 0 0 6px #2ecc71;
-    pointer-events: none;
 }
 
-/* Línea roja horizontal */
 .course.approved::after {
     content: "";
     position: absolute;
@@ -64,34 +61,22 @@ h1 {
     height: 4px;
     background-color: #ff2b2b;
     transform: translateY(-50%);
-    pointer-events: none;
     border-radius: 3px;
     box-shadow: 0 0 6px #ff2b2b;
 }
 
-/* Animación */
 @keyframes approvedPop {
-    0% {
-        transform: scale(0.95);
-        filter: brightness(0.8);
-    }
-    60% {
-        transform: scale(1.04);
-        filter: brightness(1.2);
-    }
-    100% {
-        transform: scale(1);
-        filter: brightness(1);
-    }
+    0% { transform: scale(0.95); filter: brightness(0.8); }
+    60% { transform: scale(1.04); filter: brightness(1.2); }
+    100% { transform: scale(1); filter: brightness(1); }
 }
 
 /* ===== BLOQUEADOS ===== */
 .course.locked {
     background-color: #111 !important;
-    border-left: 5px solid #333 !important;
+    border-left-color: #333 !important;
     color: #777 !important;
     cursor: not-allowed;
-    opacity: 0.8;
 }
 
 /* ===== SEMESTRES ===== */
@@ -108,10 +93,9 @@ h1 {
 .semester h2 {
     text-align: center;
     margin-bottom: 5px;
-    color: #ffffff;
 }
 
-/* ===== COLORES POR SIGLA (DARK MODE) ===== */
+/* ===== COLORES POR SIGLA ===== */
 
 /* MAT - Azul */
 .course.mat {
@@ -119,10 +103,22 @@ h1 {
     border-left: 6px solid #2196f3;
 }
 
-/* EIQ - Verde */
-.course.eiq {
+/* EIE - Verde */
+.course.eie {
     background-color: #1f4d3a !important;
     border-left: 6px solid #4caf50;
+}
+
+/* QUI - Morado */
+.course.qui {
+    background-color: #4b256b !important;
+    border-left: 6px solid #9b59b6;
+}
+
+/* FIS - Celeste */
+.course.fis {
+    background-color: #1e4d5f !important;
+    border-left: 6px solid #4fc3f7;
 }
 
 /* ING - Amarillo */
@@ -131,52 +127,39 @@ h1 {
     border-left: 6px solid #f1c40f;
 }
 
-/* QUI - Rojo */
-.course.qui {
-    background-color: #5a1f1f !important;
-    border-left: 6px solid #e74c3c;
-}
-
-/* FIS - Café */
-.course.fis {
-    background-color: #4a3624 !important;
-    border-left: 6px solid #8d6e63;
-}
-
-/* ===== BLOQUEADOS POR SIGLA ===== */
-.course.mat.locked,
-.course.eiq.locked,
-.course.ing.locked,
-.course.qui.locked,
-.course.fis.locked,
-.course.fin.locked,
-.course.rosado.locked {
-    background-color: #111 !important;
-    border-left-color: #333 !important;
-    color: #777 !important;
-}
-
-/* ===== APROBADOS POR SIGLA ===== */
-.course.mat.approved,
-.course.eiq.approved,
-.course.ing.approved,
-.course.qui.approved,
-.course.fis.approved,
-.course.fin.approved,
-.course.rosado.approved {
-    border-left-color: #2ecc71 !important;
-}
-
-/* FIN - Morado */
+/* FIN - Naranjo */
 .course.fin {
-    background-color: #4b256b !important;
-    border-left: 6px solid #9b59b6;
+    background-color: #6b3b12 !important;
+    border-left: 6px solid #ff9800;
 }
 
-/* ===== RAMOS ROSADOS (ICR / IER / FOFU) ===== */
+/* DER - Gris */
+.course.der {
+    background-color: #3a3a3a !important;
+    border-left: 6px solid #9e9e9e;
+}
+
+/* EII - Rojo */
+.course.eii {
+    background-color: #5a1f1f !important;
+    border-left: 6px solid #e53935;
+}
+
+/* FORMACIÓN - Rosado */
 .course.rosado {
     background-color: #6b2b4a !important;
     border-left: 6px solid #ff6fae;
+}
+
+/* OPT - Verde claro */
+.course.opt {
+    background-color: #2f5f3a !important;
+    border-left: 6px solid #6fdc8c;
+}
+
+/* ===== APROBADOS (todos) ===== */
+.course.approved {
+    border-left-color: #2ecc71 !important;
 }
 
 /* ===== BARRA DE PROGRESO ===== */
@@ -190,7 +173,6 @@ h1 {
 #progress-text {
     margin-bottom: 6px;
     font-weight: bold;
-    color: #ffffff;
 }
 
 #progress-bar {
@@ -207,40 +189,4 @@ h1 {
     width: 0%;
     background: linear-gradient(90deg, #2ecc71, #27ae60);
     transition: width 0.3s ease;
-}
-/* ===== ICA - NARANJO ===== */
-.course.ica {
-    background-color: #6b3b12 !important;
-    border-left: 6px solid #ff9800;
-    color: #ffffff !important;
-}
-
-/* ICA bloqueado */
-.course.ica.locked {
-    background-color: #111 !important;
-    border-left-color: #333 !important;
-    color: #777 !important;
-}
-
-/* ICA aprobado */
-.course.ica.approved {
-    border-left-color: #2ecc71 !important;
-}
-/* OPT - Gris */
-.course.opt {
-    background-color: #2b2b2b !important;
-    border-left: 6px solid #9e9e9e;
-    color: #ffffff !important;
-}
-
-/* OPT bloqueado */
-.course.opt.locked {
-    background-color: #161616 !important;
-    border-left-color: #444 !important;
-    color: #777 !important;
-}
-
-/* OPT aprobado */
-.course.opt.approved {
-    border-left-color: #2ecc71 !important;
 }
