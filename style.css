@@ -122,3 +122,43 @@ h1 {
     background-color: #1f5e5a;
     border-left-color: #1abc9c;
 }
+/* ===== FIX DEFINITIVO BARRA DE PROGRESO ===== */
+#progress-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    max-width: 700px;
+    margin: 30px auto 40px auto;
+    text-align: center;
+}
+
+#progress-text {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+#credits-text {
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: #cccccc;
+}
+
+#progress-bar {
+    width: 100%;
+    height: 20px;
+    background-color: #222;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #333;
+}
+
+#progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #2ecc71, #27ae60);
+    transition: width 0.4s ease;
+}
