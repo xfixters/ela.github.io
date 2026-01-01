@@ -7,7 +7,7 @@ const semesters = {
         { code: "IER010", name: "Antropologia Cristiana", prereq: [], credits: 2 }
     ],
     2: [
-        { code: "FIS1002", name: "Física Mecanica", prereq: ["MAT1001"], credits: 5 },
+        { code: "FIS1001", name: "Física Mecanica", prereq: ["MAT1001"], credits: 5 },
         { code: "MAT1002", name: "Cálculo Diferencial e Integral", prereq: ["MAT1001"], credits: 6 },
         { code: "MAT1004", name: "Algebra Lineal", prereq: ["MAT1001"], credits: 4 },
         { code: "QUI1140", name: "Fundamentos de Quimica", prereq: [], credits: 4 }
