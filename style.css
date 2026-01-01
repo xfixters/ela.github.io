@@ -3,13 +3,34 @@ body {
     background-color: #0e0e0e;
     color: #ffffff;
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
 }
 
 h1 {
     text-align: center;
-    margin: 20px 0;
+    color: #ffffff;
+}
+
+/* ===== BOTON CAMBIO DE MALLA ===== */
+.nav-mallas {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0 25px;
+}
+
+.btn-malla {
+    background: linear-gradient(135deg, #2196f3, #1abc9c);
+    color: #ffffff;
+    padding: 10px 22px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 3px 8px #000;
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.btn-malla:hover {
+    transform: scale(1.05);
+    filter: brightness(1.15);
 }
 
 /* ===== GRID ===== */
@@ -17,52 +38,48 @@ h1 {
     display: grid;
     grid-template-columns: repeat(11, 1fr);
     gap: 16px;
-    padding: 0 20px 40px;
-}
-
-/* ===== SEMESTRES ===== */
-.semester {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    background-color: #121212;
-    border: 1px solid #222;
-    padding: 8px;
-    border-radius: 8px;
-}
-
-.semester h2 {
-    text-align: center;
-    margin-bottom: 6px;
-    font-size: 16px;
 }
 
 /* ===== RAMOS ===== */
 .course {
-    position: relative;
     background-color: #1a1a1a;
-    padding: 10px;
+    padding: 12px;
     border-radius: 6px;
     box-shadow: 0 2px 5px #000;
     cursor: pointer;
     border-left: 6px solid #444;
     color: #ffffff;
+    position: relative;
+    overflow: hidden; /* 🔧 evita que textos se salgan */
     transition: transform 0.15s ease, filter 0.15s ease;
+}
 
-    /* FIX textos largos */
-    white-space: normal;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
+.course strong {
+    display: block;
+    font-size: 13px;
+}
+
+.course small {
+    font-size: 11px;
+    opacity: 0.85;
 }
 
 .course:hover {
-    transform: scale(1.02);
     filter: brightness(1.15);
+    transform: scale(1.02);
 }
 
-/* ===== RAMOS APROBADOS ===== */
+/* ===== BLOQUEADOS ===== */
+.course.locked {
+    background-color: #111 !important;
+    border-left-color: #333 !important;
+    color: #777 !important;
+    cursor: not-allowed;
+    opacity: 0.85;
+}
+
+/* ===== APROBADOS ===== */
 .course.approved {
-    opacity: 0.95;
     animation: approvedPop 0.25s ease-out;
 }
 
@@ -89,9 +106,9 @@ h1 {
     height: 4px;
     background-color: #ff2b2b;
     transform: translateY(-50%);
+    pointer-events: none;
     border-radius: 3px;
     box-shadow: 0 0 6px #ff2b2b;
-    pointer-events: none;
 }
 
 /* Animación */
@@ -110,18 +127,21 @@ h1 {
     }
 }
 
-/* ===== BLOQUEADOS ===== */
-.course.locked {
-    background-color: #0b0b0b !important;
-    border-left-color: #000 !important;
-    color: #555 !important;
-    cursor: not-allowed;
-    opacity: 0.85;
+/* ===== SEMESTRES ===== */
+.semester {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #121212;
+    border: 1px solid #222;
+    padding: 8px;
+    border-radius: 6px;
 }
 
-.course.locked:hover {
-    transform: none;
-    filter: none;
+.semester h2 {
+    text-align: center;
+    margin-bottom: 6px;
+    color: #ffffff;
 }
 
 /* ===== COLORES POR SIGLA ===== */
@@ -174,7 +194,7 @@ h1 {
     border-left-color: #8d6e63;
 }
 
-/* FORMACIÓN (ICR / IER / FOFU) - Rosado */
+/* FORMACIÓN - Rosado */
 .course.rosado {
     background-color: #6b2b4a;
     border-left-color: #ff6fae;
@@ -186,58 +206,22 @@ h1 {
     border-left-color: #1abc9c;
 }
 
-/* ===== BLOQUEADOS POR SIGLA ===== */
-.course.locked.mat,
-.course.locked.eie,
-.course.locked.qui,
-.course.locked.fis,
-.course.locked.ing,
-.course.locked.fin,
-.course.locked.der,
-.course.locked.eii,
-.course.locked.rosado,
-.course.locked.opt {
-    background-color: #0b0b0b !important;
-    border-left-color: #000 !important;
-    color: #555 !important;
-}
-
-/* ===== APROBADOS POR SIGLA ===== */
-.course.approved.mat,
-.course.approved.eie,
-.course.approved.qui,
-.course.approved.fis,
-.course.approved.ing,
-.course.approved.fin,
-.course.approved.der,
-.course.approved.eii,
-.course.approved.rosado,
-.course.approved.opt {
-    border-left-color: #2ecc71 !important;
-}
-
 /* ===== BARRA DE PROGRESO ===== */
 #progress-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
     width: 100%;
     max-width: 700px;
-    margin: 30px auto 40px auto;
+    margin: 25px auto 35px;
     text-align: center;
 }
 
 #progress-text {
-    font-size: 18px;
-    font-weight: bold;
     margin-bottom: 6px;
+    font-weight: bold;
 }
 
 #credits-text {
-    font-size: 14px;
     margin-bottom: 10px;
+    font-size: 14px;
     color: #cccccc;
 }
 
