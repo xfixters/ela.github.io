@@ -1,4 +1,4 @@
-/* ===== MODO OSCURO GLOBAL ===== */
+/* ===== GLOBAL ===== */
 body {
     background-color: #0e0e0e;
     color: #ffffff;
@@ -7,7 +7,6 @@ body {
 
 h1 {
     text-align: center;
-    color: #ffffff;
 }
 
 /* ===== GRID ===== */
@@ -24,51 +23,13 @@ h1 {
     border-radius: 6px;
     box-shadow: 0 2px 5px #000;
     cursor: pointer;
-    border-left: 5px solid #444;
-    color: #ffffff !important;
+    border-left: 6px solid #444;
     transition: transform 0.15s ease, filter 0.15s ease;
 }
 
 .course:hover {
-    filter: brightness(1.15);
     transform: scale(1.02);
-}
-
-/* ===== APROBADOS ===== */
-.course.approved {
-    position: relative;
-    opacity: 0.95;
-    animation: approvedPop 0.25s ease-out;
-}
-
-.course.approved::before {
-    content: "✔";
-    position: absolute;
-    top: 6px;
-    right: 8px;
-    font-size: 20px;
-    font-weight: bold;
-    color: #2ecc71;
-    text-shadow: 0 0 6px #2ecc71;
-}
-
-.course.approved::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: -5%;
-    width: 110%;
-    height: 4px;
-    background-color: #ff2b2b;
-    transform: translateY(-50%);
-    border-radius: 3px;
-    box-shadow: 0 0 6px #ff2b2b;
-}
-
-@keyframes approvedPop {
-    0% { transform: scale(0.95); filter: brightness(0.8); }
-    60% { transform: scale(1.04); filter: brightness(1.2); }
-    100% { transform: scale(1); filter: brightness(1); }
+    filter: brightness(1.15);
 }
 
 /* ===== BLOQUEADOS ===== */
@@ -79,114 +40,85 @@ h1 {
     cursor: not-allowed;
 }
 
+/* ===== APROBADOS ===== */
+.course.approved::before {
+    content: "✔";
+    position: absolute;
+    top: 6px;
+    right: 8px;
+    color: #2ecc71;
+    font-size: 20px;
+}
+
 /* ===== SEMESTRES ===== */
 .semester {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
     background-color: #121212;
-    border: 1px solid #222;
     padding: 6px;
     border-radius: 6px;
 }
 
 .semester h2 {
     text-align: center;
-    margin-bottom: 5px;
 }
 
-/* ===== COLORES POR SIGLA ===== */
+/* ===== COLORES POR RAMO ===== */
 
 /* MAT - Azul */
 .course.mat {
-    background-color: #1e3a5f !important;
-    border-left: 6px solid #2196f3;
+    background-color: #1e3a5f;
+    border-left-color: #2196f3;
 }
 
 /* EIE - Verde */
 .course.eie {
-    background-color: #1f4d3a !important;
-    border-left: 6px solid #4caf50;
+    background-color: #1f4d3a;
+    border-left-color: #4caf50;
 }
 
 /* QUI - Morado */
 .course.qui {
-    background-color: #4b256b !important;
-    border-left: 6px solid #9b59b6;
+    background-color: #4b256b;
+    border-left-color: #9b59b6;
 }
 
-/* FIS - Celeste */
+/* FIS - Rojo */
 .course.fis {
-    background-color: #1e4d5f !important;
-    border-left: 6px solid #4fc3f7;
+    background-color: #5a1f1f;
+    border-left-color: #e74c3c;
 }
 
 /* ING - Amarillo */
 .course.ing {
-    background-color: #5c4b1e !important;
-    border-left: 6px solid #f1c40f;
+    background-color: #5c4b1e;
+    border-left-color: #f1c40f;
 }
 
 /* FIN - Naranjo */
 .course.fin {
-    background-color: #6b3b12 !important;
-    border-left: 6px solid #ff9800;
+    background-color: #6b3b12;
+    border-left-color: #ff9800;
 }
 
 /* DER - Gris */
 .course.der {
-    background-color: #3a3a3a !important;
-    border-left: 6px solid #9e9e9e;
+    background-color: #2b2b2b;
+    border-left-color: #9e9e9e;
 }
 
-/* EII - Rojo */
+/* EII - Café */
 .course.eii {
-    background-color: #5a1f1f !important;
-    border-left: 6px solid #e53935;
+    background-color: #4a3624;
+    border-left-color: #8d6e63;
 }
 
 /* FORMACIÓN - Rosado */
 .course.rosado {
-    background-color: #6b2b4a !important;
-    border-left: 6px solid #ff6fae;
+    background-color: #6b2b4a;
+    border-left-color: #ff6fae;
 }
 
-/* OPT - Verde claro */
+/* OPT - Turquesa */
 .course.opt {
-    background-color: #2f5f3a !important;
-    border-left: 6px solid #6fdc8c;
-}
-
-/* ===== APROBADOS (todos) ===== */
-.course.approved {
-    border-left-color: #2ecc71 !important;
-}
-
-/* ===== BARRA DE PROGRESO ===== */
-#progress-container {
-    width: 100%;
-    max-width: 600px;
-    margin: 20px auto;
-    text-align: center;
-}
-
-#progress-text {
-    margin-bottom: 6px;
-    font-weight: bold;
-}
-
-#progress-bar {
-    width: 100%;
-    height: 20px;
-    background-color: #222;
-    border-radius: 10px;
-    overflow: hidden;
-    border: 1px solid #333;
-}
-
-#progress-fill {
-    height: 100%;
-    width: 0%;
-    background: linear-gradient(90deg, #2ecc71, #27ae60);
-    transition: width 0.3s ease;
+    background-color: #1f5e5a;
+    border-left-color: #1abc9c;
 }
