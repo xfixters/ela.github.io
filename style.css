@@ -219,3 +219,16 @@ h1 {
     background: linear-gradient(90deg, #2ecc71, #27ae60);
     transition: width 0.4s ease;
 }
+/* ===== FORZAR RAMOS BLOQUEADOS A NEGRO ===== */
+.course.locked {
+    background-color: #0f0f0f !important;
+    border-left-color: #222 !important;
+    color: #666 !important;
+    filter: none !important;
+}
+
+/* Quitar check y línea roja si está bloqueado (seguridad extra) */
+.course.locked::before,
+.course.locked::after {
+    display: none !important;
+}
