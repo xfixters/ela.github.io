@@ -4,10 +4,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const progressFill = document.getElementById("progress-fill");
     const creditsText = document.getElementById("credits-text");
 
+    // ===== CLAVE LOCALSTORAGE ELA =====
+    const STORAGE_KEY = "approvedCourses_ELA";
+
     // ===== CARGAR RAMOS APROBADOS DESDE LOCALSTORAGE =====
     let approved = [];
     try {
-        approved = JSON.parse(localStorage.getItem("approvedCourses")) || [];
+        approved = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
     } catch (e) {
         approved = [];
     }
@@ -25,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // ===== LIMPIEZA AUTOMÁTICA (POR SI CAMBIAS DATA) =====
     approved = approved.filter(code => allCourses.includes(code));
-    localStorage.setItem("approvedCourses", JSON.stringify(approved));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(approved));
 
     // ===== VALIDAR PRERREQUISITOS =====
     function isUnlocked(course) {
@@ -117,7 +120,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 const div = document.createElement("div");
                 div.classList.add("course");
 
-                // ===== COLORES POR SIGLA =====
                 if (course.code.startsWith("MAT")) div.classList.add("mat");
                 if (course.code.startsWith("EIE")) div.classList.add("eie");
                 if (course.code.startsWith("QUI")) div.classList.add("qui");
@@ -135,7 +137,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 if (course.code.startsWith("OPT")) div.classList.add("opt");
 
-                // ===== CONTENIDO =====
                 div.innerHTML = `
                     <strong>${course.code}</strong><br>
                     ${course.name}<br>
@@ -152,7 +153,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     div.classList.add("locked");
                 }
 
-                // ===== CLICK =====
                 if (unlocked || approved.includes(course.code)) {
                     div.addEventListener("click", () => {
                         if (approved.includes(course.code)) {
@@ -162,7 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         }
 
                         localStorage.setItem(
-                            "approvedCourses",
+                            STORAGE_KEY,
                             JSON.stringify(approved)
                         );
 
@@ -181,3 +181,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
     render();
 });
+
