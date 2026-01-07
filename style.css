@@ -39,13 +39,7 @@ h1 {
     display: grid;
     grid-template-columns: repeat(11, 1fr);
     gap: 16px;
-
-    /* 🔥 AGREGADO */
     overflow-x: auto;
-    overflow-y: hidden;
-    white-space: nowrap;
-    grid-auto-flow: column;
-    grid-auto-columns: min-content;
 }
 
 /* ===== RAMOS ===== */
@@ -65,15 +59,10 @@ h1 {
     word-wrap: break-word;
     overflow-wrap: break-word;
     hyphens: auto;
+    white-space: normal;
 
     transition: transform 0.15s ease, filter 0.15s ease;
     position: relative;
-
-    /* 🔥 AGREGADO */
-    min-width: 220px;
-    max-width: 220px;
-    white-space: normal;
-    word-break: break-word;
 }
 
 .course:hover {
@@ -149,10 +138,6 @@ h1 {
     border: 1px solid #222;
     padding: 8px;
     border-radius: 6px;
-
-    /* 🔥 AGREGADO */
-    min-width: 260px;
-    flex-shrink: 0;
 }
 
 .semester h2 {
