@@ -21,6 +21,71 @@ document.addEventListener("DOMContentLoaded", () => {
     // ===== CARGAR PRACTICA DESDE LOCALSTORAGE =====
     let practicaAprobada = localStorage.getItem(PRACTICA_KEY) === "true";
 
+    // ===== CREAR SWITCH PRACTICA (ARRIBA DERECHA) =====
+    const practicaContainer = document.createElement("div");
+    practicaContainer.style.position = "fixed";
+    practicaContainer.style.top = "20px";
+    practicaContainer.style.right = "20px";
+    practicaContainer.style.zIndex = "9999";
+    practicaContainer.style.display = "flex";
+    practicaContainer.style.alignItems = "center";
+    practicaContainer.style.gap = "10px";
+    practicaContainer.style.fontWeight = "bold";
+
+    const practicaLabel = document.createElement("span");
+    practicaLabel.textContent = "Práctica aprobada";
+
+    const practicaSwitch = document.createElement("label");
+    practicaSwitch.style.position = "relative";
+    practicaSwitch.style.display = "inline-block";
+    practicaSwitch.style.width = "50px";
+    practicaSwitch.style.height = "26px";
+
+    const practicaInput = document.createElement("input");
+    practicaInput.type = "checkbox";
+    practicaInput.checked = practicaAprobada;
+    practicaInput.style.opacity = "0";
+    practicaInput.style.width = "0";
+    practicaInput.style.height = "0";
+
+    const practicaSlider = document.createElement("span");
+    practicaSlider.style.position = "absolute";
+    practicaSlider.style.cursor = "pointer";
+    practicaSlider.style.top = "0";
+    practicaSlider.style.left = "0";
+    practicaSlider.style.right = "0";
+    practicaSlider.style.bottom = "0";
+    practicaSlider.style.backgroundColor = practicaAprobada ? "#2ecc71" : "#e74c3c";
+    practicaSlider.style.transition = "0.4s";
+    practicaSlider.style.borderRadius = "26px";
+
+    const practicaCircle = document.createElement("span");
+    practicaCircle.style.position = "absolute";
+    practicaCircle.style.height = "20px";
+    practicaCircle.style.width = "20px";
+    practicaCircle.style.left = practicaAprobada ? "26px" : "3px";
+    practicaCircle.style.bottom = "3px";
+    practicaCircle.style.backgroundColor = "white";
+    practicaCircle.style.transition = "0.4s";
+    practicaCircle.style.borderRadius = "50%";
+
+    practicaSlider.appendChild(practicaCircle);
+    practicaSwitch.appendChild(practicaInput);
+    practicaSwitch.appendChild(practicaSlider);
+    practicaContainer.appendChild(practicaLabel);
+    practicaContainer.appendChild(practicaSwitch);
+    document.body.appendChild(practicaContainer);
+
+    practicaInput.addEventListener("change", () => {
+        practicaAprobada = practicaInput.checked;
+        localStorage.setItem(PRACTICA_KEY, practicaAprobada);
+
+        practicaSlider.style.backgroundColor = practicaAprobada ? "#2ecc71" : "#e74c3c";
+        practicaCircle.style.left = practicaAprobada ? "26px" : "3px";
+
+        render();
+    });
+
     // ===== LISTA COMPLETA DE RAMOS =====
     const allCourses = [];
     const courseMap = {};
