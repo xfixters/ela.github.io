@@ -78,15 +78,15 @@ h1 {
     line-height: 1.35;
     font-weight: 500;
 
-    /* 🔥 FIX DEFINITIVO TEXTO (PC / MAC / CELULAR) */
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    word-break: keep-all;
+    /* 🔥 FIX DEFINITIVO PALABRAS LARGAS */
+    word-break: normal;
+    overflow-wrap: anywhere;
     hyphens: manual;
 
     transition: transform 0.15s ease, filter 0.15s ease;
     position: relative;
 }
+
 
 .course:hover {
     filter: brightness(1.15);
