@@ -7,6 +7,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // ===== CLAVE LOCALSTORAGE ELA =====
     const STORAGE_KEY = "approvedCourses_ELA";
 
+    // ===== CLAVE PRACTICA ELA =====
+    const PRACTICA_KEY = "practica_aprobada_ELA";
+
     // ===== CARGAR RAMOS APROBADOS DESDE LOCALSTORAGE =====
     let approved = [];
     try {
@@ -14,6 +17,9 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch (e) {
         approved = [];
     }
+
+    // ===== CARGAR PRACTICA DESDE LOCALSTORAGE =====
+    let practicaAprobada = localStorage.getItem(PRACTICA_KEY) === "true";
 
     // ===== LISTA COMPLETA DE RAMOS =====
     const allCourses = [];
@@ -35,6 +41,12 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!course.prereq || course.prereq.length === 0) {
             return true;
         }
+
+        // ===== REGLA PRACTICA PARA EIE620 =====
+        if (course.code === "EIE620" && !practicaAprobada) {
+            return false;
+        }
+
         return course.prereq.every(req => approved.includes(req));
     }
 
@@ -181,4 +193,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
     render();
 });
-
