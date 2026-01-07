@@ -3,6 +3,8 @@ body {
     background-color: #0e0e0e;
     color: #ffffff;
     font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 h1 {
@@ -34,17 +36,33 @@ h1 {
     filter: brightness(1.15);
 }
 
-/* ===== GRID ===== */
+/* ===== GRID (SCROLL HORIZONTAL TIPO ICQ) ===== */
 #grid {
     display: grid;
     grid-auto-flow: column;
-    grid-auto-columns: minmax(170px, 1fr);
+    grid-auto-columns: 185px;   /* ancho correcto, NO estirado */
     gap: 16px;
     overflow-x: auto;
-    padding-bottom: 10px;
+    padding: 10px 16px 20px 16px;
 }
 
+/* ===== SEMESTRES ===== */
+.semester {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #121212;
+    border: 1px solid #222;
+    padding: 8px;
+    border-radius: 6px;
+}
 
+.semester h2 {
+    text-align: center;
+    margin: 4px 0 6px 0;
+    color: #ffffff;
+    font-size: 16px;
+}
 
 /* ===== RAMOS ===== */
 .course {
@@ -56,19 +74,19 @@ h1 {
     border-left: 5px solid #444;
     color: #ffffff !important;
 
-    font-size: 16px;
+    font-size: 15px;
     line-height: 1.35;
     font-weight: 500;
 
-    word-wrap: normal;
-    overflow-wrap: normal;
-    word-break: normal;
-    hyphens: none;
+    /* 🔥 FIX DEFINITIVO TEXTO (PC / MAC / CELULAR) */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: keep-all;
+    hyphens: manual;
 
     transition: transform 0.15s ease, filter 0.15s ease;
     position: relative;
 }
-
 
 .course:hover {
     filter: brightness(1.15);
@@ -134,23 +152,6 @@ h1 {
     opacity: 0.85;
 }
 
-/* ===== SEMESTRES ===== */
-.semester {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    background-color: #121212;
-    border: 1px solid #222;
-    padding: 8px;
-    border-radius: 6px;
-}
-
-.semester h2 {
-    text-align: center;
-    margin-bottom: 5px;
-    color: #ffffff;
-}
-
 /* ===== COLORES POR SIGLA ===== */
 
 /* MAT - Azul */
@@ -201,7 +202,7 @@ h1 {
     border-left: 6px solid #9e9e9e;
 }
 
-/* RAMOS FORMACIÓN - Rosado */
+/* FORMACIÓN - Rosado */
 .course.rosado {
     background-color: #6b2b4a !important;
     border-left: 6px solid #ff6fae;
@@ -214,32 +215,14 @@ h1 {
 }
 
 /* ===== BLOQUEADOS POR SIGLA ===== */
-.course.mat.locked,
-.course.eie.locked,
-.course.eii.locked,
-.course.qui.locked,
-.course.fis.locked,
-.course.ing.locked,
-.course.fin.locked,
-.course.der.locked,
-.course.rosado.locked,
-.course.opt.locked {
+.course.locked {
     background-color: #000000 !important;
     border-left-color: #333 !important;
     color: #777 !important;
 }
 
 /* ===== APROBADOS POR SIGLA ===== */
-.course.mat.approved,
-.course.eie.approved,
-.course.eii.approved,
-.course.qui.approved,
-.course.fis.approved,
-.course.ing.approved,
-.course.fin.approved,
-.course.der.approved,
-.course.rosado.approved,
-.course.opt.approved {
+.course.approved {
     border-left-color: #2ecc71 !important;
 }
 
@@ -249,7 +232,6 @@ h1 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
     width: 100%;
     max-width: 650px;
     margin: 25px auto 35px auto;
@@ -284,3 +266,4 @@ h1 {
     background: linear-gradient(90deg, #2ecc71, #27ae60);
     transition: width 0.3s ease;
 }
+
