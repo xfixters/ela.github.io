@@ -77,14 +77,24 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.appendChild(practicaContainer);
 
     practicaInput.addEventListener("change", () => {
-        practicaAprobada = practicaInput.checked;
-        localStorage.setItem(PRACTICA_KEY, practicaAprobada);
+    practicaAprobada = practicaInput.checked;
+    localStorage.setItem(PRACTICA_KEY, practicaAprobada);
 
-        practicaSlider.style.backgroundColor = practicaAprobada ? "#2ecc71" : "#e74c3c";
-        practicaCircle.style.left = practicaAprobada ? "26px" : "3px";
+    practicaSlider.style.backgroundColor = practicaAprobada ? "#2ecc71" : "#e74c3c";
+    practicaCircle.style.left = practicaAprobada ? "26px" : "3px";
 
-        render();
-    });
+    // ===== SI SE DESMARCA LA PRACTICA, QUITAR EIE620 =====
+    if (!practicaAprobada && approved.includes("EIE620")) {
+        removeWithDependents("EIE620");
+
+        localStorage.setItem(
+            STORAGE_KEY,
+            JSON.stringify(approved)
+        );
+    }
+
+    render();
+});
 
     // ===== LISTA COMPLETA DE RAMOS =====
     const allCourses = [];
