@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // ===== CREAR SWITCH PRACTICA (ARRIBA DERECHA) =====
     const practicaContainer = document.createElement("div");
-    practicaContainer.style.position = "fixed";
+    practicaContainer.style.position = "sticky";
     practicaContainer.style.top = "20px";
     practicaContainer.style.right = "20px";
     practicaContainer.style.zIndex = "9999";
