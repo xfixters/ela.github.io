@@ -59,14 +59,15 @@ h1 {
     line-height: 1.35;
     font-weight: 500;
 
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    hyphens: auto;
-    white-space: normal;
+    word-wrap: normal;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
 
     transition: transform 0.15s ease, filter 0.15s ease;
     position: relative;
 }
+
 
 .course:hover {
     filter: brightness(1.15);
