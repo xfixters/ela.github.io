@@ -23,14 +23,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // ===== CREAR SWITCH PRACTICA (ARRIBA DERECHA) =====
     const practicaContainer = document.createElement("div");
-    practicaContainer.style.position = "fixed";
-    practicaContainer.style.top = "20px";
+    practicaContainer.style.position = "sticky"; // ← CAMBIO CLAVE
+    practicaContainer.style.top = "0";           // ← CAMBIO CLAVE
     practicaContainer.style.right = "20px";
     practicaContainer.style.zIndex = "9999";
     practicaContainer.style.display = "flex";
     practicaContainer.style.alignItems = "center";
     practicaContainer.style.gap = "10px";
     practicaContainer.style.fontWeight = "bold";
+    practicaContainer.style.background = "#0b0b0b"; // ← NECESARIO PARA STICKY
+    practicaContainer.style.padding = "10px 15px";   // ← NECESARIO PARA STICKY
+    practicaContainer.style.justifyContent = "flex-end";
 
     const practicaLabel = document.createElement("span");
     practicaLabel.textContent = "Práctica aprobada";
@@ -74,27 +77,27 @@ document.addEventListener("DOMContentLoaded", () => {
     practicaSwitch.appendChild(practicaSlider);
     practicaContainer.appendChild(practicaLabel);
     practicaContainer.appendChild(practicaSwitch);
-    document.body.appendChild(practicaContainer);
+    document.body.prepend(practicaContainer); // ← IMPORTANTE PARA STICKY
 
     practicaInput.addEventListener("change", () => {
-    practicaAprobada = practicaInput.checked;
-    localStorage.setItem(PRACTICA_KEY, practicaAprobada);
+        practicaAprobada = practicaInput.checked;
+        localStorage.setItem(PRACTICA_KEY, practicaAprobada);
 
-    practicaSlider.style.backgroundColor = practicaAprobada ? "#2ecc71" : "#e74c3c";
-    practicaCircle.style.left = practicaAprobada ? "26px" : "3px";
+        practicaSlider.style.backgroundColor = practicaAprobada ? "#2ecc71" : "#e74c3c";
+        practicaCircle.style.left = practicaAprobada ? "26px" : "3px";
 
-    // ===== SI SE DESMARCA LA PRACTICA, QUITAR EIE620 =====
-    if (!practicaAprobada && approved.includes("EIE620")) {
-        removeWithDependents("EIE620");
+        // ===== SI SE DESMARCA LA PRACTICA, QUITAR EIE620 =====
+        if (!practicaAprobada && approved.includes("EIE620")) {
+            removeWithDependents("EIE620");
 
-        localStorage.setItem(
-            STORAGE_KEY,
-            JSON.stringify(approved)
-        );
-    }
+            localStorage.setItem(
+                STORAGE_KEY,
+                JSON.stringify(approved)
+            );
+        }
 
-    render();
-});
+        render();
+    });
 
     // ===== LISTA COMPLETA DE RAMOS =====
     const allCourses = [];
@@ -268,3 +271,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
     render();
 });
+
