@@ -37,10 +37,13 @@ h1 {
 /* ===== GRID ===== */
 #grid {
     display: grid;
-    grid-template-columns: repeat(11, 1fr);
+    grid-auto-flow: column;
+    grid-auto-columns: 185px;
     gap: 16px;
     overflow-x: auto;
+    padding-bottom: 10px;
 }
+
 
 /* ===== RAMOS ===== */
 .course {
