@@ -277,19 +277,16 @@ h1 {
         display: grid;
         grid-template-columns: 1fr;
         gap: 20px;
-
-        justify-items: center;   /* 🔑 FIX CLAVE */
-
         overflow-x: hidden;
         padding: 10px 12px 20px 12px;
-        justify-items: center;
     }
 
     /* SEMESTRES */
     .semester {
         width: 100%;
-        max-width: 420px; /* opcional pero MUY recomendado */
-        margin: 0 auto;
+        max-width: 420px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     /* RAMOS */
