@@ -269,3 +269,33 @@ h1 {
     background: linear-gradient(90deg, #2ecc71, #27ae60);
     transition: width 0.3s ease;
 }
+
+@media (max-width: 600px) {
+
+    /* GRID EN VERTICAL */
+    #grid {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+
+        overflow-x: hidden;
+        overflow-y: auto;
+        padding: 10px 12px 20px 12px;
+    }
+
+    /* SEMESTRES A LO ANCHO */
+    .semester {
+        width: 100%;
+    }
+
+    /* RAMOS UN POCO MÁS CÓMODOS */
+    .course {
+        font-size: 14px;
+        line-height: 1.35;
+
+        word-break: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+    }
+
+}
