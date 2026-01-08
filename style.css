@@ -278,6 +278,8 @@ h1 {
         grid-template-columns: 1fr;
         gap: 20px;
 
+        justify-items: center;   /* 🔑 FIX CLAVE */
+
         overflow-x: hidden;
         padding: 10px 12px 20px 12px;
     }
@@ -285,6 +287,7 @@ h1 {
     /* SEMESTRES */
     .semester {
         width: 100%;
+        max-width: 420px; /* opcional pero MUY recomendado */
     }
 
     /* RAMOS */
@@ -298,9 +301,9 @@ h1 {
         text-align: center;
     }
 
-    /* SWITCH PRACTICA (FIX REAL) */
+    /* SWITCH PRACTICA (IGNORAR, NO TOCADO) */
     #practice-switch-container {
-        position: relative;   /* 🔑 CLAVE */
+        position: relative;
         top: auto;
         right: auto;
 
