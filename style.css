@@ -82,8 +82,8 @@ h1 {
     content: "";
     position: absolute;
     top: 50%;
-    left: -5%;
-    width: 110%;
+    left: 0%;
+    width: 100%;
     height: 4px;
     background-color: #ff2b2b;
     transform: translateY(-50%);
