@@ -3,10 +3,6 @@ body {
     background-color: #0e0e0e;
     color: #ffffff;
     font-family: Arial, sans-serif;
-
-    margin: 0;
-    padding-left: env(safe-area-inset-left);
-    padding-right: env(safe-area-inset-right);
 }
 
 
@@ -44,9 +40,6 @@ h1 {
     display: grid;
     grid-template-columns: repeat(11, 1fr);
     gap: 16px;
-
-    width: 100%;
-    box-sizing: border-box;
 }
 
 
@@ -294,8 +287,6 @@ h1 {
     .semester {
         width: 100%;
         max-width: 420px;
-        margin-left: auto;
-        margin-right: auto;
     }
 
     /* RAMOS */
