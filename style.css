@@ -272,6 +272,7 @@ h1 {
 
 @media (max-width: 600px) {
 
+    /* GRID EN MÓVIL */
     #grid {
         display: grid;
         grid-template-columns: 1fr;
@@ -281,10 +282,12 @@ h1 {
         padding: 10px 12px 20px 12px;
     }
 
+    /* SEMESTRES */
     .semester {
         width: 100%;
     }
 
+    /* RAMOS */
     .course {
         font-size: 14px;
         line-height: 1.35;
@@ -292,6 +295,13 @@ h1 {
         word-break: normal;
         overflow-wrap: anywhere;
         hyphens: auto;
+    }
+
+    /* SWITCH PRACTICA */
+    #practice-switch-container {
+        top: 70px;
+        right: 12px;
+        transform: scale(0.9);
     }
 
 }
