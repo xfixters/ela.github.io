@@ -51,6 +51,8 @@ h1 {
     border-left: 5px solid #444;
     color: #ffffff !important;
     transition: transform 0.15s ease, filter 0.15s ease;
+
+    position: relative; /* 🔥 FIX CRÍTICO */
 }
 
 .course:hover {
@@ -82,8 +84,8 @@ h1 {
     content: "";
     position: absolute;
     top: 50%;
-    left: -5%;
-    width: 110%;
+    left: 0;
+    width: 100%;
     height: 4px;
     background-color: #ff2b2b;
     transform: translateY(-50%);
