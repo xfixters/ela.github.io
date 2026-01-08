@@ -288,6 +288,7 @@ h1 {
     .semester {
         width: 100%;
         max-width: 420px; /* opcional pero MUY recomendado */
+        margin: 0 auto;
     }
 
     /* RAMOS */
