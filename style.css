@@ -282,6 +282,7 @@ h1 {
 
         overflow-x: hidden;
         padding: 10px 12px 20px 12px;
+        justify-items: center;
     }
 
     /* SEMESTRES */
